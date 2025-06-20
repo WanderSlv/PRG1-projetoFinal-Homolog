@@ -8,7 +8,6 @@ void desenha(int textoPosX, int textoPosY, int larguraJanela, int alturaJanela, 
     int bolaY = GetRandomValue((int)raio, alturaJanela);
     int velocidade = 2;
     bool mostrarFPS = false;
-    bool inverteBolaX = false;
     int direcaoX = 1;
     int direcaoY = 1;
 
