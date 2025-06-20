@@ -2,14 +2,14 @@
 TARGET = wander
 
 # Source files
-SRC = src/main.c
+SRC = src/main.c src/funcoes/funcoes.c
 
 # Compiler and flags
 CC = gcc
 CFLAGS = -Wall -O2
 
 # Include dirs and libraries
-INCLUDES = -I. -I src
+INCLUDES = -I. -I src -I src/funcoes
 LIBS = lib/libraylib.a -lm -ldl -lpthread -lGL -lrt -lX11 -Werror=return-type
 
 # Main target
