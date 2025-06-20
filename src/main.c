@@ -1,7 +1,7 @@
 #include "funcoes.h"
 
 void menu() {
-    printf("Bem-vindo ao meu joguinho de mata-mata\n");
+    printf("Bem-vindo ao meu joguinho a FUJA DAS BOLAS\n");
     printf("1 - Jogar\n");
     printf("2 - Sair\n");
     printf("3 - Opções\n");
@@ -22,7 +22,7 @@ int main() {
             switch (vOp) {
                 case 1:
                     printf("Você escolheu Jogar.\n");
-                    
+                    printf("(Para Jogar utilize as setinhas do seu computador!!!!)\n");
                     printf("Digite seu nome: ");
                     char texto[50];
                     scanf("%49s",texto);
