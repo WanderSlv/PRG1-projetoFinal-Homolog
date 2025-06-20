@@ -8,7 +8,7 @@ void desenha(int textoPosX, int textoPosY, int larguraJanela, int alturaJanela, 
     bool mostrarFPS = false;
     bool inverteBolaX = false;
     int velocidadeBola = 5;
-    int quantBola = 3;
+    int quantBola = 1;
     int direcaoX[quantBola];
     int direcaoY[quantBola];
     Vector2 bola[quantBola];
@@ -110,7 +110,7 @@ void desenha(int textoPosX, int textoPosY, int larguraJanela, int alturaJanela, 
             bola[b].y += direcaoY[b];
 
             if (CheckCollisionCircles(circColisaoPlayer, raioCircColisaoPlayer, bola[b], raioCircColisaoPlayer)) {
-                printf("COLIDIU, CACETE!!!!!!!!\n");
+                printf("COLIDIU, CACETE!!\n");
                 printf("Pontuação: %.2f.\r", tempoGasto*10);
                 bolaColidiu = true;
             }
@@ -124,7 +124,7 @@ void desenha(int textoPosX, int textoPosY, int larguraJanela, int alturaJanela, 
             ClearBackground(BLACK);
             DrawText(tempoTotal, larguraJanela - MeasureText(tempoTotal, tamanhoFonte*5), alturaJanela - tamanhoFonte*5, tamanhoFonte*5, WHITE); // Nome do Player
 
-            DrawCircle(circColisaoPlayer.x, circColisaoPlayer.y, raioCircColisaoPlayer, RED);
+            //DrawCircle(circColisaoPlayer.x, circColisaoPlayer.y, raioCircColisaoPlayer, RED);
 
             DrawTriangle(v1, v2, v3, BLUE); // Desenhando o triangulo // Rectangle GetCollisionRec(Rectangle rec1, Rectangle rec2);
 
