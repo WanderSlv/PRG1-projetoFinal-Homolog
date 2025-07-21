@@ -15,7 +15,6 @@ typedef struct ScoreRecord {
     double score;
 } ScoreRecord;
 
-// Enum para o estado do jogo (mantido aqui para simplicidade)
 typedef enum GameScreen {
     TITLE = 0,
     GAMEPLAY,
@@ -24,8 +23,6 @@ typedef enum GameScreen {
     CREDITS,
     HIGHSCORES
 } GameScreen;
-
-// A struct GameConfig foi movida para config.h
 
 // Declarações das funções
 void InitGame(GameConfig *config, Player *player, Enemy enemies[], const char *playerName);
@@ -37,4 +34,4 @@ void LoadHighScores(ScoreRecord highScores[], int *numRecords);
 void SaveHighScore(const char *playerName, double score);
 void DrawHighScores(const ScoreRecord highScores[], int numRecords);
 
-#endif // GAME_H
+#endif

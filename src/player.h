@@ -3,7 +3,10 @@
 
 #include "raylib.h"
 
-// Estrutura para representar o jogador
+// Estrutura para representar o jogador tiradas da biblioteca raylib
+// O jogador é representado por um triângulo e um círculo de colisão
+// O triângulo é formado por três vértices (v1, v2, v3)
+// O círculo de colisão é usado para detectar colisões com outros objetos
 typedef struct Player {
     Vector2 v1; // Vértice superior do triângulo
     Vector2 v2; // Vértice inferior esquerdo

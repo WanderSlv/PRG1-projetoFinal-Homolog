@@ -1,17 +1,15 @@
 #include "raylib.h"
 #include <stdio.h>
 #include <string.h>
-
 #include "game.h"
 #include "player.h"
 #include "enemy.h"
-#include "config.h" // Inclui a definição de GameConfig
+#include "config.h"
 
 #define MAX_ENEMIES 10
 #define MAX_SCORE_RECORDS 5
 
-// Função DrawMenu movida para main.c
-void DrawMenu() { // Remove GameScreen currentScreen como parâmetro, não é mais necessário aqui
+void DrawMenu() {
     printf("Bem-vindo ao meu joguinho: A FUJA DAS BOLAS!\n");
     printf("1 - Jogar\n");
     printf("2 - Sair\n");
@@ -27,7 +25,7 @@ int main() {
     char playerName[MAX_NAME_LENGTH] = "Jogador"; // Nome padrão
     ScoreRecord highScores[MAX_SCORE_RECORDS];
     int numHighScores = 0;
-    int menuOption = 0; // Variável para ler a opção do menu
+    int menuOption = 0;
 
     GameConfig gameConfig = {
         .screenWidth = 1280,
@@ -44,18 +42,12 @@ int main() {
     double elapsedTime = 0.0;
     bool showFPS = false;
 
-    // REMOVA: InitWindow(gameConfig.screenWidth, gameConfig.screenHeight, "Projeto Final - Menu");
-    // REMOVA: SetTargetFPS(60);
-    SetTraceLogLevel(LOG_NONE); // Pode manter aqui para evitar logs da Raylib desde o início, se quiser.
+    SetTraceLogLevel(LOG_NONE); // Evitar logs da Raylib.
 
-    while (1) { // Loop infinito, saímos com 'return 0'
-        // A interação do menu será via terminal
+    while (1) {
         if (currentScreen == TITLE) {
-            DrawMenu(); // Chama a função DrawMenu local, agora apenas exibe no terminal
+            DrawMenu();
             scanf("%d", &menuOption); // Lê a opção do usuário
-
-            // Limpa o buffer de entrada para evitar problemas com leituras futuras
-            // while (getchar() != '\n'); // Dependendo do sistema e do compilador, pode ser necessário
 
             switch (menuOption) {
                 case 1:
@@ -74,7 +66,7 @@ int main() {
 
                 case 2:
                     printf("Você escolheu Sair. Tchau!\n");
-                    return 0; // Sai do programa
+                    return 0; // Sai do game
 
                 case 3:
                     printf("Você escolheu Opções. Ainda em desenvolvimento...\n");
@@ -85,9 +77,12 @@ int main() {
                     break;
 
                 case 5:
-                    // Aqui você também precisa abrir uma janela para exibir os recordes
+                    //Janela para os recordes
                     InitWindow(gameConfig.screenWidth, gameConfig.screenHeight, "Projeto Final - Recordes");
                     SetTargetFPS(60); // FPS para a tela de recordes
+                    printf("Você escolheu Recordes.\n");
+                    printf("Carregando recordes...\n");
+                    // Carrega os recordes do arquivo
 
                     LoadHighScores(highScores, &numHighScores); // Carrega os recordes
                     currentScreen = HIGHSCORES;
@@ -97,15 +92,14 @@ int main() {
                     printf("Escolha inválida! Tente novamente...\n");
                     break;
             }
-            printf("\n"); // Adiciona uma nova linha para melhor formatação no terminal
+            printf("\n"); //formatação para nova linha
         }
 
-        // Se estiver em uma tela gráfica, use o loop principal da Raylib
         if (currentScreen == GAMEPLAY || currentScreen == HIGHSCORES) {
             if (WindowShouldClose()) {
-                CloseWindow(); // Fecha a janela da Raylib
+                CloseWindow();
                 currentScreen = TITLE; // Volta para o menu do terminal
-                continue; // Volta para o início do loop while (1)
+                continue;
             }
 
             switch (currentScreen) {
@@ -119,9 +113,9 @@ int main() {
                     if (!gameOn) {
                         printf("FIM DE JOGO! Sua pontuação: %.2f\n", elapsedTime * 10);
                         SaveHighScore(playerName, elapsedTime * 10);
-                        CloseWindow(); // Fecha a janela do jogo
+                        CloseWindow();
                         currentScreen = TITLE; // Volta para o menu do terminal
-                        elapsedTime = 0.0; // Reseta o tempo
+                        elapsedTime = 0.0;
                     }
                 } break;
 
@@ -132,18 +126,16 @@ int main() {
 
                     if (IsKeyPressed(KEY_ESCAPE)) {
                         CloseWindow(); // Fecha a janela de recordes
-                        currentScreen = TITLE; // Volta para o menu do terminal
+                        currentScreen = TITLE;
                     }
                 } break;
 
-                // OPTIONS e CREDITS também podem ter suas telas Raylib aqui se necessário
                 default: break;
             }
         }
     }
 
-    // Este CloseWindow() final nunca será alcançado devido ao 'return 0'
-    // mas é bom mantê-lo para boas práticas, caso a estrutura mude.
-    CloseWindow();
+    CloseWindow(); //teoricamente nunca será alcançado, mas por boa pratica estarei encerrando a janela da Raylib aqui.
+    printf("Obrigado por jogar!\n");
     return 0;
 }

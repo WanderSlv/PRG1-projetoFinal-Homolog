@@ -12,7 +12,7 @@ void InitEnemy(Enemy *enemy, int screenWidth, int screenHeight, float radius, in
 }
 
 void UpdateEnemy(Enemy *enemy, int screenWidth, int screenHeight) {
-    // Inverte a direção horizontal se colidir com as bordas
+    // Inverte a direção horizontal se colidir com as bordas ( ainda incompleto )
     if (enemy->position.x - enemy->radius < 0) {
         enemy->position.x = enemy->radius;
         enemy->direction.x *= -1;
@@ -20,7 +20,7 @@ void UpdateEnemy(Enemy *enemy, int screenWidth, int screenHeight) {
         enemy->position.x = screenWidth - enemy->radius;
         enemy->direction.x *= -1;
     }
-    // Inverte a direção vertical se colidir com as bordas
+    // Inverte a direção vertical se colidir com as bordas ( ainda incompleto )
     if (enemy->position.y - enemy->radius < 0) {
         enemy->position.y = enemy->radius;
         enemy->direction.y *= -1;

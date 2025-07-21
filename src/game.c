@@ -74,7 +74,7 @@ void DrawGame(const Player *player, const Enemy enemies[], int numEnemies, int s
 void LoadHighScores(ScoreRecord highScores[], int *numRecords) {
     FILE *file = fopen(HIGHSCORE_FILE, "r");
     if (file == NULL) {
-        *numRecords = 0; // Arquivo não existe, nenhum recorde
+        *numRecords = 0;
         return;
     }
 
@@ -85,7 +85,7 @@ void LoadHighScores(ScoreRecord highScores[], int *numRecords) {
     *numRecords = i;
     fclose(file);
 
-    // Opcional: Ordenar os recordes do maior para o menor
+    // Ordenar os recordes do maior para o menor
     for (int j = 0; j < *numRecords - 1; j++) {
         for (int k = j + 1; k < *numRecords; k++) {
             if (highScores[j].score < highScores[k].score) {
@@ -104,7 +104,6 @@ void SaveHighScore(const char *playerName, double score) {
     LoadHighScores(highScores, &numRecords); // Carrega os recordes existentes
 
     // Verifica se a nova pontuação é alta o suficiente para entrar na lista
-    // ou se há espaço para ela
     if (numRecords < MAX_SCORE_RECORDS || (numRecords > 0 && score > highScores[numRecords - 1].score)) {
         // Adiciona o novo recorde
         if (numRecords < MAX_SCORE_RECORDS) {
@@ -123,8 +122,6 @@ void SaveHighScore(const char *playerName, double score) {
                 }
             }
         }
-
-        // Se a lista exceder o MAX_SCORE_RECORDS, trunca
         if (numRecords > MAX_SCORE_RECORDS) {
             numRecords = MAX_SCORE_RECORDS;
         }
