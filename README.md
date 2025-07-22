@@ -16,12 +16,12 @@ Primeiro, instale as dependências de desenvolvimento necessárias para a Raylib
 
 * **Para openSUSE Tumbleweed:**
     ```bash
-    sudo zypper install make gcc libx11-devel Mesa-libGL-devel
+    sudo zypper install make gcc libx11-devel Mesa-libGL-devel raylib-devel
     ```
 
 * **Para Distribuições baseadas em Debian/Ubuntu:**
     ```bash
-    sudo apt install --no-install-recommends make libgl1-mesa-dev gcc libc6-dev
+    sudo zypper install --no-recommends make gcc libx11-devel Mesa-libGL-devel raylib-devel
     ```
 
 * **Para Windows:**
