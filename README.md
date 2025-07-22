@@ -34,7 +34,7 @@ Após instalar as dependências, clone o repositório do projeto e compile-o:
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/WanderSlv/PRG1-projetoFinal-Homolog](https://github.com/WanderSlv/PRG1-projetoFinal-Homolog)
+    git clone https://github.com/WanderSlv/PRG1-projetoFinal-Homolog
     ```
 
 2.  **Navegue até o diretório do projeto:**
